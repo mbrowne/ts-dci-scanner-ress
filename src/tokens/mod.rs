@@ -603,6 +603,7 @@ mod test {
         check_keyword("protected", Token::Keyword(Keyword::Protected("protected")));
         check_keyword("public", Token::Keyword(Keyword::Public("public")));
         check_keyword("return", Token::Keyword(Keyword::Return("return")));
+        check_keyword("role", Token::Keyword(Keyword::Return("role"))); // dci
         check_keyword("static", Token::Keyword(Keyword::Static("static")));
         check_keyword("super", Token::Keyword(Keyword::Super("super")));
         check_keyword("switch", Token::Keyword(Keyword::Switch("switch")));

@@ -173,9 +173,14 @@ impl<'a> Tokenizer<'a> {
             Ok(None)
         }
     }
-
+    /// attempt to parse `return` or `role`
     fn r_keywords(&mut self) -> MaybeKeyword {
-        self.suffix_for_token("eturn", RawToken::Keyword(RawKeyword::Return))
+        // dci - modified
+        if self.eat_ch_or_escaped('e')? {
+            self.suffix_for_token("turn", RawToken::Keyword(RawKeyword::Return))
+        } else {
+            self.suffix_for_token("ole", RawToken::Keyword(RawKeyword::Role))
+        }
     }
     /// attempt to parse `static`, `super`, or `switch`
     fn s_keywords(&mut self) -> MaybeKeyword {
@@ -454,6 +459,11 @@ mod test {
     #[test]
     fn keyword_return() {
         test_with_escapes("return", RawToken::Keyword(RawKeyword::Return));
+    }
+    // dci
+    #[test]
+    fn keyword_role() {
+        test_with_escapes("role", RawToken::Keyword(RawKeyword::Role));
     }
     #[test]
     fn keyword_static() {

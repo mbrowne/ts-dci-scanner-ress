@@ -125,6 +125,7 @@ pub enum RawKeyword {
     Protected,
     Public,
     Return,
+    Role, // dci
     Static,
     Super,
     Switch,
@@ -173,6 +174,7 @@ impl RawKeyword {
             RawKeyword::Protected => Keyword::Protected(s),
             RawKeyword::Public => Keyword::Public(s),
             RawKeyword::Return => Keyword::Return(s),
+            RawKeyword::Role => Keyword::Role(s), // dci
             RawKeyword::Static => Keyword::Static(s),
             RawKeyword::Super => Keyword::Super(s),
             RawKeyword::Switch => Keyword::Switch(s),
@@ -223,6 +225,7 @@ impl<T> From<&Keyword<T>> for RawKeyword {
             Keyword::Protected(_) => RawKeyword::Protected,
             Keyword::Public(_) => RawKeyword::Public,
             Keyword::Return(_) => RawKeyword::Return,
+            Keyword::Role(_) => RawKeyword::Role, // dci
             Keyword::Static(_) => RawKeyword::Static,
             Keyword::Super(_) => RawKeyword::Super,
             Keyword::Switch(_) => RawKeyword::Switch,

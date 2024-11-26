@@ -77,6 +77,7 @@ pub enum Keyword<T> {
     Protected(T),
     Public(T),
     Return(T),
+    Role(T), // dci
     Static(T),
     Super(T),
     Switch(T),
@@ -128,6 +129,7 @@ where
             Self::Protected(i) => Self::Protected(i.clone()),
             Self::Public(i) => Self::Public(i.clone()),
             Self::Return(i) => Self::Return(i.clone()),
+            Self::Role(i) => Self::Role(i.clone()), // dci
             Self::Static(i) => Self::Static(i.clone()),
             Self::Super(i) => Self::Super(i.clone()),
             Self::Switch(i) => Self::Switch(i.clone()),
@@ -180,6 +182,7 @@ impl<T, U> PartialEq<Keyword<T>> for Keyword<U> {
                 | (Protected(_), Protected(_))
                 | (Public(_), Public(_))
                 | (Return(_), Return(_))
+                | (Role(_), Role(_)) // dci
                 | (Static(_), Static(_))
                 | (Super(_), Super(_))
                 | (Switch(_), Switch(_))
@@ -230,6 +233,7 @@ impl Keyword<()> {
             Keyword::Protected(_) => Keyword::Protected(s),
             Keyword::Public(_) => Keyword::Public(s),
             Keyword::Return(_) => Keyword::Return(s),
+            Keyword::Role(_) => Keyword::Role(s), // dci
             Keyword::Static(_) => Keyword::Static(s),
             Keyword::Super(_) => Keyword::Super(s),
             Keyword::Switch(_) => Keyword::Switch(s),
@@ -398,6 +402,7 @@ impl<T> Keyword<T> {
             Keyword::Public(_) => "public",
             Keyword::Static(_) => "static",
             Keyword::Return(_) => "return",
+            Keyword::Role(_) => "role", // dci
             Keyword::Super(_) => "super",
             Keyword::Switch(_) => "switch",
             Keyword::This(_) => "this",
@@ -446,6 +451,7 @@ impl<T> Keyword<T> {
             Keyword::Public(_) => Keyword::Public(()),
             Keyword::Static(_) => Keyword::Static(()),
             Keyword::Return(_) => Keyword::Return(()),
+            Keyword::Role(_) => Keyword::Role(()), // dci
             Keyword::Super(_) => Keyword::Super(()),
             Keyword::Switch(_) => Keyword::Switch(()),
             Keyword::This(_) => Keyword::This(()),
@@ -497,6 +503,7 @@ impl<'a> Keyword<&'a str> {
             "public" => Keyword::Public("public"),
             "static" => Keyword::Static("static"),
             "return" => Keyword::Return("return"),
+            "role" => Keyword::Role("role"), // dci
             "super" => Keyword::Super("super"),
             "switch" => Keyword::Switch("switch"),
             "this" => Keyword::This("this"),
@@ -543,6 +550,7 @@ impl<'a> Keyword<&'a str> {
             Keyword::Private(s) => s,
             Keyword::Protected(s) => s,
             Keyword::Public(s) => s,
+            Keyword::Role(s) => s, // dci
             Keyword::Static(s) => s,
             Keyword::Return(s) => s,
             Keyword::Super(s) => s,
